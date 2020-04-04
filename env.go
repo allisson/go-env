@@ -17,8 +17,6 @@ func GetString(key, defaultValue string) string {
 
 // GetInt returns a int value from environment variable or default value
 func GetInt(key string, defaultValue int) int {
-	result := 0
-
 	val, ok := os.LookupEnv(key)
 	if !ok {
 		return defaultValue
@@ -34,8 +32,6 @@ func GetInt(key string, defaultValue int) int {
 
 // GetInt32 returns a int32 value from environment variable or default value
 func GetInt32(key string, defaultValue int32) int32 {
-	result := int64(0)
-
 	val, ok := os.LookupEnv(key)
 	if !ok {
 		return defaultValue
@@ -51,8 +47,6 @@ func GetInt32(key string, defaultValue int32) int32 {
 
 // GetInt64 returns a int64 value from environment variable or default value
 func GetInt64(key string, defaultValue int64) int64 {
-	result := int64(0)
-
 	val, ok := os.LookupEnv(key)
 	if !ok {
 		return defaultValue
@@ -68,8 +62,6 @@ func GetInt64(key string, defaultValue int64) int64 {
 
 // GetBool returns a boolean value from environment variable or default value
 func GetBool(key string, defaultValue bool) bool {
-	result := false
-
 	val, ok := os.LookupEnv(key)
 	if !ok {
 		return defaultValue
@@ -85,8 +77,6 @@ func GetBool(key string, defaultValue bool) bool {
 
 // GetFloat32 returns a float32 value from environment variable or default value
 func GetFloat32(key string, defaultValue float32) float32 {
-	result := float64(0)
-
 	val, ok := os.LookupEnv(key)
 	if !ok {
 		return defaultValue
@@ -102,8 +92,6 @@ func GetFloat32(key string, defaultValue float32) float32 {
 
 // GetFloat64 returns a float64 value from environment variable or default value
 func GetFloat64(key string, defaultValue float64) float64 {
-	result := float64(0)
-
 	val, ok := os.LookupEnv(key)
 	if !ok {
 		return defaultValue
