@@ -53,6 +53,56 @@ func TestGetInt(t *testing.T) {
 	}
 }
 
+func TestGetInt32(t *testing.T) {
+	os.Setenv("INT2", "2")
+	os.Setenv("INT3", "três")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		defaultValue  int32
+		expectedValue int32
+	}{
+		{"test-default-value", "INT1", 1, 1},
+		{"test-value-from-envvar", "INT2", 1, 2},
+		{"test-invalid-value-from-envvar", "INT3", 3, 3},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetInt32(tt.key, tt.defaultValue)
+			if result != tt.expectedValue {
+				t.Errorf("GetInt32(\"%s\", %d): expected %d, actual %d", tt.key, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
+func TestGetInt64(t *testing.T) {
+	os.Setenv("INT2", "2")
+	os.Setenv("INT3", "três")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		defaultValue  int64
+		expectedValue int64
+	}{
+		{"test-default-value", "INT1", 1, 1},
+		{"test-value-from-envvar", "INT2", 1, 2},
+		{"test-invalid-value-from-envvar", "INT3", 3, 3},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetInt64(tt.key, tt.defaultValue)
+			if result != tt.expectedValue {
+				t.Errorf("GetInt64(\"%s\", %d): expected %d, actual %d", tt.key, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
 func TestGetBool(t *testing.T) {
 	os.Setenv("BOOL2", "true")
 	os.Setenv("BOOL3", "tru")

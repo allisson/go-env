@@ -32,6 +32,40 @@ func GetInt(key string, defaultValue int) int {
 	return result
 }
 
+// GetInt32 returns a int32 value from environment variable or default value
+func GetInt32(key string, defaultValue int32) int32 {
+	result := int64(0)
+
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseInt(val, 10, 32)
+	if err != nil {
+		return defaultValue
+	}
+
+	return int32(result)
+}
+
+// GetInt64 returns a int64 value from environment variable or default value
+func GetInt64(key string, defaultValue int64) int64 {
+	result := int64(0)
+
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseInt(val, 10, 64)
+	if err != nil {
+		return defaultValue
+	}
+
+	return result
+}
+
 // GetBool returns a boolean value from environment variable or default value
 func GetBool(key string, defaultValue bool) bool {
 	result := false
