@@ -116,3 +116,13 @@ func GetFloat64(key string, defaultValue float64) float64 {
 
 	return result
 }
+
+// GetBytes returns a byte slice value from environment variable or default value
+func GetBytes(key string, defaultValue []byte) []byte {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	return []byte(val)
+}

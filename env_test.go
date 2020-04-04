@@ -1,6 +1,7 @@
 package env
 
 import (
+	"bytes"
 	"os"
 	"testing"
 )
@@ -173,6 +174,29 @@ func TestGetFloat64(t *testing.T) {
 			result := GetFloat64(tt.key, tt.defaultValue)
 			if result != tt.expectedValue {
 				t.Errorf("GetFloat64(\"%s\", %b): expected %b, actual %b", tt.key, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
+func TestGetBytes(t *testing.T) {
+	os.Setenv("STRING2", "STRING2")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		defaultValue  []byte
+		expectedValue []byte
+	}{
+		{"test-default-value", "STRING1", []byte("string1"), []byte("string1")},
+		{"test-value-from-envvar", "STRING2", []byte("string2"), []byte("STRING2")},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetBytes(tt.key, tt.defaultValue)
+			if bytes.Compare(result, tt.expectedValue) != 0 {
+				t.Errorf("GetBytes(\"%s\", %#v): expected %#v, actual %#v", tt.key, tt.defaultValue, tt.expectedValue, result)
 			}
 		})
 	}
