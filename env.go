@@ -82,3 +82,37 @@ func GetBool(key string, defaultValue bool) bool {
 
 	return result
 }
+
+// GetFloat32 returns a float32 value from environment variable or default value
+func GetFloat32(key string, defaultValue float32) float32 {
+	result := float64(0)
+
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseFloat(val, 32)
+	if err != nil {
+		return defaultValue
+	}
+
+	return float32(result)
+}
+
+// GetFloat64 returns a float64 value from environment variable or default value
+func GetFloat64(key string, defaultValue float64) float64 {
+	result := float64(0)
+
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseFloat(val, 64)
+	if err != nil {
+		return defaultValue
+	}
+
+	return result
+}

@@ -127,3 +127,53 @@ func TestGetBool(t *testing.T) {
 		})
 	}
 }
+
+func TestGetFloat32(t *testing.T) {
+	os.Setenv("FLOAT2", "2.1")
+	os.Setenv("FLOAT3", "três-ponto-um")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		defaultValue  float32
+		expectedValue float32
+	}{
+		{"test-default-value", "FLOAT1", 1.5, 1.5},
+		{"test-value-from-envvar", "FLOAT2", 1, 2.1},
+		{"test-invalid-value-from-envvar", "FLOAT3", 3.1, 3.1},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetFloat32(tt.key, tt.defaultValue)
+			if result != tt.expectedValue {
+				t.Errorf("GetFloat32(\"%s\", %b): expected %b, actual %b", tt.key, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
+func TestGetFloat64(t *testing.T) {
+	os.Setenv("FLOAT2", "2.1")
+	os.Setenv("FLOAT3", "três-ponto-um")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		defaultValue  float64
+		expectedValue float64
+	}{
+		{"test-default-value", "FLOAT1", 1.5, 1.5},
+		{"test-value-from-envvar", "FLOAT2", 1, 2.1},
+		{"test-invalid-value-from-envvar", "FLOAT3", 3.1, 3.1},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetFloat64(tt.key, tt.defaultValue)
+			if result != tt.expectedValue {
+				t.Errorf("GetFloat64(\"%s\", %b): expected %b, actual %b", tt.key, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
