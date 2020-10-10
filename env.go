@@ -4,6 +4,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // GetString returns a string value from environment variable or default value
@@ -23,10 +24,8 @@ func GetStringSlice(key, sep string, defaultValue []string) []string {
 		return defaultValue
 	}
 
-	slice := []string{}
-	for _, s := range strings.Split(val, sep) {
-		slice = append(slice, s)
-	}
+	var slice []string
+	slice = append(slice, strings.Split(val, sep)...)
 
 	return slice
 }
@@ -53,7 +52,7 @@ func GetIntSlice(key, sep string, defaultValue []int) []int {
 		return defaultValue
 	}
 
-	slice := []int{}
+	var slice []int
 	for _, s := range strings.Split(val, sep) {
 		result, err := strconv.Atoi(s)
 		if err != nil {
@@ -87,7 +86,7 @@ func GetInt32Slice(key, sep string, defaultValue []int32) []int32 {
 		return defaultValue
 	}
 
-	slice := []int32{}
+	var slice []int32
 	for _, s := range strings.Split(val, sep) {
 		result, err := strconv.ParseInt(s, 10, 32)
 		if err != nil {
@@ -121,7 +120,7 @@ func GetInt64Slice(key, sep string, defaultValue []int64) []int64 {
 		return defaultValue
 	}
 
-	slice := []int64{}
+	var slice []int64
 	for _, s := range strings.Split(val, sep) {
 		result, err := strconv.ParseInt(s, 10, 64)
 		if err != nil {
@@ -155,7 +154,7 @@ func GetBoolSlice(key, sep string, defaultValue []bool) []bool {
 		return defaultValue
 	}
 
-	slice := []bool{}
+	var slice []bool
 	for _, s := range strings.Split(val, sep) {
 		result, err := strconv.ParseBool(s)
 		if err != nil {
@@ -189,7 +188,7 @@ func GetFloat32Slice(key, sep string, defaultValue []float32) []float32 {
 		return defaultValue
 	}
 
-	slice := []float32{}
+	var slice []float32
 	for _, s := range strings.Split(val, sep) {
 		result, err := strconv.ParseFloat(s, 32)
 		if err != nil {
@@ -223,7 +222,7 @@ func GetFloat64Slice(key, sep string, defaultValue []float64) []float64 {
 		return defaultValue
 	}
 
-	slice := []float64{}
+	var slice []float64
 	for _, s := range strings.Split(val, sep) {
 		result, err := strconv.ParseFloat(s, 64)
 		if err != nil {
@@ -243,4 +242,10 @@ func GetBytes(key string, defaultValue []byte) []byte {
 	}
 
 	return []byte(val)
+}
+
+// GetDuration returns a time.Duration value from environment variable or default value
+func GetDuration(key string, defaultValue int64, duration time.Duration) time.Duration {
+	value := GetInt64(key, defaultValue)
+	return time.Duration(value) * duration
 }

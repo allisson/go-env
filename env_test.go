@@ -5,6 +5,7 @@ import (
 	"os"
 	"reflect"
 	"testing"
+	"time"
 )
 
 func TestGetString(t *testing.T) {
@@ -390,8 +391,32 @@ func TestGetBytes(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.kind, func(t *testing.T) {
 			result := GetBytes(tt.key, tt.defaultValue)
-			if bytes.Compare(result, tt.expectedValue) != 0 {
+			if !bytes.Equal(result, tt.expectedValue) {
 				t.Errorf("GetBytes(\"%s\", %#v): expected %#v, actual %#v", tt.key, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
+func TestGetDuration(t *testing.T) {
+	os.Setenv("DURATION2", "10")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		defaultValue  int64
+		duration      time.Duration
+		expectedValue time.Duration
+	}{
+		{"test-default-value", "DURATION1", 1, time.Second, 1 * time.Second},
+		{"test-value-from-envvar", "DURATION2", 1, time.Hour, 10 * time.Hour},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetDuration(tt.key, tt.defaultValue, tt.duration)
+			if result != tt.expectedValue {
+				t.Errorf("GetDuration(\"%s\", %d, %v): expected %v, actual %v", tt.key, tt.defaultValue, tt.duration, tt.expectedValue, result)
 			}
 		})
 	}
