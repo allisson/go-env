@@ -13,3 +13,8 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+.golangci-lint
+coverage.html
+.tool-versions
+node_modules

@@ -21,6 +21,7 @@ func main() {
 	// Set a environment variable
 	os.Setenv("STRING", "string")
 	os.Setenv("STRING_SLICE", "string1,string2,string3")
+	os.Setenv("DURATION", 10, time.Seconds)
 
 	// Get a environment variable
 	str := env.GetString("STRING", "default-value")
@@ -33,6 +34,9 @@ func main() {
 	// Get a slice environment variable
 	str3 := env.GetStringSlice("STRING_SLICE", ",", []string{"default-value"})
 	fmt.Printf("str3=%#v\n", str3)
+
+	duration := env.GetDuration("DURATION", 1, time.Seconds)
+	fmt.Printf("duration=%v\n", duration)
 
 	// Other functions:
 	// GetInt()
@@ -56,4 +60,5 @@ go run main.go
 str="string"
 str2="default-value-for-string2"
 str3=[]string{"string1", "string2", "string3"}
+duration=10h0m0s
 ```
