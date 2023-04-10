@@ -216,6 +216,165 @@ func TestGetInt64Slice(t *testing.T) {
 	}
 }
 
+func TestGetUint(t *testing.T) {
+	os.Setenv("INT2", "2")
+	os.Setenv("INT3", "três")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		defaultValue  uint
+		expectedValue uint
+	}{
+		{"test-default-value", "INT1", 1, 1},
+		{"test-value-from-envvar", "INT2", 1, 2},
+		{"test-invalid-value-from-envvar", "INT3", 3, 3},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetUint(tt.key, tt.defaultValue)
+			if result != tt.expectedValue {
+				t.Errorf("GetInt64(\"%s\", %d): expected %d, actual %d", tt.key, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
+func TestGetUintSlice(t *testing.T) {
+	os.Setenv("INT2", "1,2")
+	os.Setenv("INT3", "1 2 3")
+	os.Setenv("INT4", "1,2,três")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		sep           string
+		defaultValue  []uint
+		expectedValue []uint
+	}{
+		{"test-default-value-sep-comma", ",", "INT1", []uint{1}, []uint{1}},
+		{"test-value-from-envvar-sep-comma", "INT2", ",", []uint{1}, []uint{1, 2}},
+		{"test-value-from-envvar-sep-space", "INT3", " ", []uint{1}, []uint{1, 2, 3}},
+		{"test-invalid-value-from-envvar", "INT4", ",", []uint{3}, []uint{3}},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetUintSlice(tt.key, tt.sep, tt.defaultValue)
+			if !reflect.DeepEqual(result, tt.expectedValue) {
+				t.Errorf("GetInt64Slice(\"%s\", \"%s\", %#v): expected %#v, actual %#v", tt.key, tt.sep, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
+func TestGetUint32(t *testing.T) {
+	os.Setenv("INT2", "2")
+	os.Setenv("INT3", "três")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		defaultValue  uint32
+		expectedValue uint32
+	}{
+		{"test-default-value", "INT1", 1, 1},
+		{"test-value-from-envvar", "INT2", 1, 2},
+		{"test-invalid-value-from-envvar", "INT3", 3, 3},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetUint32(tt.key, tt.defaultValue)
+			if result != tt.expectedValue {
+				t.Errorf("GetInt64(\"%s\", %d): expected %d, actual %d", tt.key, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
+func TestGetUint32Slice(t *testing.T) {
+	os.Setenv("INT2", "1,2")
+	os.Setenv("INT3", "1 2 3")
+	os.Setenv("INT4", "1,2,três")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		sep           string
+		defaultValue  []uint32
+		expectedValue []uint32
+	}{
+		{"test-default-value-sep-comma", ",", "INT1", []uint32{1}, []uint32{1}},
+		{"test-value-from-envvar-sep-comma", "INT2", ",", []uint32{1}, []uint32{1, 2}},
+		{"test-value-from-envvar-sep-space", "INT3", " ", []uint32{1}, []uint32{1, 2, 3}},
+		{"test-invalid-value-from-envvar", "INT4", ",", []uint32{3}, []uint32{3}},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetUint32Slice(tt.key, tt.sep, tt.defaultValue)
+			if !reflect.DeepEqual(result, tt.expectedValue) {
+				t.Errorf("GetInt64Slice(\"%s\", \"%s\", %#v): expected %#v, actual %#v", tt.key, tt.sep, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
+func TestGetUint64(t *testing.T) {
+	os.Setenv("INT2", "2")
+	os.Setenv("INT3", "três")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		defaultValue  uint64
+		expectedValue uint64
+	}{
+		{"test-default-value", "INT1", 1, 1},
+		{"test-value-from-envvar", "INT2", 1, 2},
+		{"test-invalid-value-from-envvar", "INT3", 3, 3},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetUint64(tt.key, tt.defaultValue)
+			if result != tt.expectedValue {
+				t.Errorf("GetInt64(\"%s\", %d): expected %d, actual %d", tt.key, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
+func TestGetUint64Slice(t *testing.T) {
+	os.Setenv("INT2", "1,2")
+	os.Setenv("INT3", "1 2 3")
+	os.Setenv("INT4", "1,2,três")
+
+	var tests = []struct {
+		kind          string
+		key           string
+		sep           string
+		defaultValue  []uint64
+		expectedValue []uint64
+	}{
+		{"test-default-value-sep-comma", ",", "INT1", []uint64{1}, []uint64{1}},
+		{"test-value-from-envvar-sep-comma", "INT2", ",", []uint64{1}, []uint64{1, 2}},
+		{"test-value-from-envvar-sep-space", "INT3", " ", []uint64{1}, []uint64{1, 2, 3}},
+		{"test-invalid-value-from-envvar", "INT4", ",", []uint64{3}, []uint64{3}},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.kind, func(t *testing.T) {
+			result := GetUint64Slice(tt.key, tt.sep, tt.defaultValue)
+			if !reflect.DeepEqual(result, tt.expectedValue) {
+				t.Errorf("GetInt64Slice(\"%s\", \"%s\", %#v): expected %#v, actual %#v", tt.key, tt.sep, tt.defaultValue, tt.expectedValue, result)
+			}
+		})
+	}
+}
+
 func TestGetBool(t *testing.T) {
 	os.Setenv("BOOL2", "true")
 	os.Setenv("BOOL3", "tru")
