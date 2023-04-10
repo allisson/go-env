@@ -132,6 +132,108 @@ func GetInt64Slice(key, sep string, defaultValue []int64) []int64 {
 	return slice
 }
 
+// GetUint returns a uint value from environment variable or default value
+func GetUint(key string, defaultValue uint) uint {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseUint(val, 10, 0)
+	if err != nil {
+		return defaultValue
+	}
+
+	return uint(result)
+}
+
+// GetUintSlice returns a uint slice from environment variable or default value
+func GetUintSlice(key, sep string, defaultValue []uint) []uint {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	var slice []uint
+	for _, s := range strings.Split(val, sep) {
+		result, err := strconv.ParseUint(s, 10, 0)
+		if err != nil {
+			return defaultValue
+		}
+		slice = append(slice, uint(result))
+	}
+
+	return slice
+}
+
+// GetUint32 returns a uint32 value from environment variable or default value
+func GetUint32(key string, defaultValue uint32) uint32 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseUint(val, 10, 32)
+	if err != nil {
+		return defaultValue
+	}
+
+	return uint32(result)
+}
+
+// GetUint32Slice returns a uint32 slice from environment variable or default value
+func GetUint32Slice(key, sep string, defaultValue []uint32) []uint32 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	var slice []uint32
+	for _, s := range strings.Split(val, sep) {
+		result, err := strconv.ParseUint(s, 10, 32)
+		if err != nil {
+			return defaultValue
+		}
+		slice = append(slice, uint32(result))
+	}
+
+	return slice
+}
+
+// GetUint64 returns a uint64 value from environment variable or default value
+func GetUint64(key string, defaultValue uint64) uint64 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseUint(val, 10, 64)
+	if err != nil {
+		return defaultValue
+	}
+
+	return result
+}
+
+// GetUint64Slice returns a uint64 slice from environment variable or default value
+func GetUint64Slice(key, sep string, defaultValue []uint64) []uint64 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	var slice []uint64
+	for _, s := range strings.Split(val, sep) {
+		result, err := strconv.ParseUint(s, 10, 64)
+		if err != nil {
+			return defaultValue
+		}
+		slice = append(slice, result)
+	}
+
+	return slice
+}
+
 // GetBool returns a boolean value from environment variable or default value
 func GetBool(key string, defaultValue bool) bool {
 	val, ok := os.LookupEnv(key)

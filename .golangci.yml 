@@ -1,0 +1,7 @@
+linters:
+  enable:
+    - gosec
+    - goimports
+linters-settings:
+  goimports:
+    local-prefixes: github.com/allisson/go-env
