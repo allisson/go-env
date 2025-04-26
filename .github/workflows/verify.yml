@@ -28,12 +28,10 @@ jobs:
     - name: Get dependencies
       run: go mod download
 
-    - name: Run golangci-lint
+    - name: golangci-lint
       uses: golangci/golangci-lint-action@v7
       with:
         version: latest
-        skip-pkg-cache: true
-        skip-build-cache: true
 
     - name: Test
       run: make test
