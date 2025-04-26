@@ -9,7 +9,7 @@ import (
 )
 
 func TestGetString(t *testing.T) {
-	os.Setenv("STRING2", "STRING2")
+	os.Setenv("STRING2", "STRING2") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -32,8 +32,8 @@ func TestGetString(t *testing.T) {
 }
 
 func TestGetStringSlice(t *testing.T) {
-	os.Setenv("STRING2", "string1,string2")
-	os.Setenv("STRING3", "string1 string2 string3")
+	os.Setenv("STRING2", "string1,string2")         //nolint:errcheck
+	os.Setenv("STRING3", "string1 string2 string3") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -58,8 +58,8 @@ func TestGetStringSlice(t *testing.T) {
 }
 
 func TestGetInt(t *testing.T) {
-	os.Setenv("INT2", "2")
-	os.Setenv("INT3", "três")
+	os.Setenv("INT2", "2")    //nolint:errcheck
+	os.Setenv("INT3", "três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -83,9 +83,9 @@ func TestGetInt(t *testing.T) {
 }
 
 func TestGetIntSlice(t *testing.T) {
-	os.Setenv("INT2", "1,2")
-	os.Setenv("INT3", "1 2 3")
-	os.Setenv("INT4", "1,2,três")
+	os.Setenv("INT2", "1,2")      //nolint:errcheck
+	os.Setenv("INT3", "1 2 3")    //nolint:errcheck
+	os.Setenv("INT4", "1,2,três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -111,8 +111,8 @@ func TestGetIntSlice(t *testing.T) {
 }
 
 func TestGetInt8(t *testing.T) {
-	os.Setenv("INT2", "2")
-	os.Setenv("INT3", "três")
+	os.Setenv("INT2", "2")    //nolint:errcheck
+	os.Setenv("INT3", "três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -136,9 +136,9 @@ func TestGetInt8(t *testing.T) {
 }
 
 func TestGetInt8Slice(t *testing.T) {
-	os.Setenv("INT2", "1,2")
-	os.Setenv("INT3", "1 2 3")
-	os.Setenv("INT4", "1,2,três")
+	os.Setenv("INT2", "1,2")      //nolint:errcheck
+	os.Setenv("INT3", "1 2 3")    //nolint:errcheck
+	os.Setenv("INT4", "1,2,três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -164,8 +164,8 @@ func TestGetInt8Slice(t *testing.T) {
 }
 
 func TestGetInt16(t *testing.T) {
-	os.Setenv("INT2", "2")
-	os.Setenv("INT3", "três")
+	os.Setenv("INT2", "2")    //nolint:errcheck
+	os.Setenv("INT3", "três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -189,9 +189,9 @@ func TestGetInt16(t *testing.T) {
 }
 
 func TestGetInt16Slice(t *testing.T) {
-	os.Setenv("INT2", "1,2")
-	os.Setenv("INT3", "1 2 3")
-	os.Setenv("INT4", "1,2,três")
+	os.Setenv("INT2", "1,2")      //nolint:errcheck
+	os.Setenv("INT3", "1 2 3")    //nolint:errcheck
+	os.Setenv("INT4", "1,2,três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -217,8 +217,8 @@ func TestGetInt16Slice(t *testing.T) {
 }
 
 func TestGetInt32(t *testing.T) {
-	os.Setenv("INT2", "2")
-	os.Setenv("INT3", "três")
+	os.Setenv("INT2", "2")    //nolint:errcheck
+	os.Setenv("INT3", "três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -242,9 +242,9 @@ func TestGetInt32(t *testing.T) {
 }
 
 func TestGetInt32Slice(t *testing.T) {
-	os.Setenv("INT2", "1,2")
-	os.Setenv("INT3", "1 2 3")
-	os.Setenv("INT4", "1,2,três")
+	os.Setenv("INT2", "1,2")      //nolint:errcheck
+	os.Setenv("INT3", "1 2 3")    //nolint:errcheck
+	os.Setenv("INT4", "1,2,três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -270,8 +270,8 @@ func TestGetInt32Slice(t *testing.T) {
 }
 
 func TestGetInt64(t *testing.T) {
-	os.Setenv("INT2", "2")
-	os.Setenv("INT3", "três")
+	os.Setenv("INT2", "2")    //nolint:errcheck
+	os.Setenv("INT3", "três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -295,9 +295,9 @@ func TestGetInt64(t *testing.T) {
 }
 
 func TestGetInt64Slice(t *testing.T) {
-	os.Setenv("INT2", "1,2")
-	os.Setenv("INT3", "1 2 3")
-	os.Setenv("INT4", "1,2,três")
+	os.Setenv("INT2", "1,2")      //nolint:errcheck
+	os.Setenv("INT3", "1 2 3")    //nolint:errcheck
+	os.Setenv("INT4", "1,2,três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -323,8 +323,8 @@ func TestGetInt64Slice(t *testing.T) {
 }
 
 func TestGetUint(t *testing.T) {
-	os.Setenv("INT2", "2")
-	os.Setenv("INT3", "três")
+	os.Setenv("INT2", "2")    //nolint:errcheck
+	os.Setenv("INT3", "três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -348,9 +348,9 @@ func TestGetUint(t *testing.T) {
 }
 
 func TestGetUintSlice(t *testing.T) {
-	os.Setenv("INT2", "1,2")
-	os.Setenv("INT3", "1 2 3")
-	os.Setenv("INT4", "1,2,três")
+	os.Setenv("INT2", "1,2")      //nolint:errcheck
+	os.Setenv("INT3", "1 2 3")    //nolint:errcheck
+	os.Setenv("INT4", "1,2,três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -376,8 +376,8 @@ func TestGetUintSlice(t *testing.T) {
 }
 
 func TestGetUint8(t *testing.T) {
-	os.Setenv("INT2", "2")
-	os.Setenv("INT3", "três")
+	os.Setenv("INT2", "2")    //nolint:errcheck
+	os.Setenv("INT3", "três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -401,9 +401,9 @@ func TestGetUint8(t *testing.T) {
 }
 
 func TestGetUint8Slice(t *testing.T) {
-	os.Setenv("INT2", "1,2")
-	os.Setenv("INT3", "1 2 3")
-	os.Setenv("INT4", "1,2,três")
+	os.Setenv("INT2", "1,2")      //nolint:errcheck
+	os.Setenv("INT3", "1 2 3")    //nolint:errcheck
+	os.Setenv("INT4", "1,2,três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -429,8 +429,8 @@ func TestGetUint8Slice(t *testing.T) {
 }
 
 func TestGetUint16(t *testing.T) {
-	os.Setenv("INT2", "2")
-	os.Setenv("INT3", "três")
+	os.Setenv("INT2", "2")    //nolint:errcheck
+	os.Setenv("INT3", "três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -454,9 +454,9 @@ func TestGetUint16(t *testing.T) {
 }
 
 func TestGetUint16Slice(t *testing.T) {
-	os.Setenv("INT2", "1,2")
-	os.Setenv("INT3", "1 2 3")
-	os.Setenv("INT4", "1,2,três")
+	os.Setenv("INT2", "1,2")      //nolint:errcheck
+	os.Setenv("INT3", "1 2 3")    //nolint:errcheck
+	os.Setenv("INT4", "1,2,três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -482,8 +482,8 @@ func TestGetUint16Slice(t *testing.T) {
 }
 
 func TestGetUint32(t *testing.T) {
-	os.Setenv("INT2", "2")
-	os.Setenv("INT3", "três")
+	os.Setenv("INT2", "2")    //nolint:errcheck
+	os.Setenv("INT3", "três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -507,9 +507,9 @@ func TestGetUint32(t *testing.T) {
 }
 
 func TestGetUint32Slice(t *testing.T) {
-	os.Setenv("INT2", "1,2")
-	os.Setenv("INT3", "1 2 3")
-	os.Setenv("INT4", "1,2,três")
+	os.Setenv("INT2", "1,2")      //nolint:errcheck
+	os.Setenv("INT3", "1 2 3")    //nolint:errcheck
+	os.Setenv("INT4", "1,2,três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -535,8 +535,8 @@ func TestGetUint32Slice(t *testing.T) {
 }
 
 func TestGetUint64(t *testing.T) {
-	os.Setenv("INT2", "2")
-	os.Setenv("INT3", "três")
+	os.Setenv("INT2", "2")    //nolint:errcheck
+	os.Setenv("INT3", "três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -560,9 +560,9 @@ func TestGetUint64(t *testing.T) {
 }
 
 func TestGetUint64Slice(t *testing.T) {
-	os.Setenv("INT2", "1,2")
-	os.Setenv("INT3", "1 2 3")
-	os.Setenv("INT4", "1,2,três")
+	os.Setenv("INT2", "1,2")      //nolint:errcheck
+	os.Setenv("INT3", "1 2 3")    //nolint:errcheck
+	os.Setenv("INT4", "1,2,três") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -588,8 +588,8 @@ func TestGetUint64Slice(t *testing.T) {
 }
 
 func TestGetBool(t *testing.T) {
-	os.Setenv("BOOL2", "true")
-	os.Setenv("BOOL3", "tru")
+	os.Setenv("BOOL2", "true") //nolint:errcheck
+	os.Setenv("BOOL3", "tru")  //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -613,9 +613,9 @@ func TestGetBool(t *testing.T) {
 }
 
 func TestGetBoolSlice(t *testing.T) {
-	os.Setenv("BOOL2", "true,true")
-	os.Setenv("BOOL3", "true true false")
-	os.Setenv("BOOL4", "true,true,falso")
+	os.Setenv("BOOL2", "true,true")       //nolint:errcheck
+	os.Setenv("BOOL3", "true true false") //nolint:errcheck
+	os.Setenv("BOOL4", "true,true,falso") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -641,8 +641,8 @@ func TestGetBoolSlice(t *testing.T) {
 }
 
 func TestGetFloat32(t *testing.T) {
-	os.Setenv("FLOAT2", "2.1")
-	os.Setenv("FLOAT3", "três-ponto-um")
+	os.Setenv("FLOAT2", "2.1")           //nolint:errcheck
+	os.Setenv("FLOAT3", "três-ponto-um") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -666,9 +666,9 @@ func TestGetFloat32(t *testing.T) {
 }
 
 func TestGetFloat32Slice(t *testing.T) {
-	os.Setenv("FLOAT2", "2.1,2.2")
-	os.Setenv("FLOAT3", "2.3 2.4 2.5")
-	os.Setenv("FLOAT4", "2.6,2.7,dois-ponto-oito")
+	os.Setenv("FLOAT2", "2.1,2.2")                 //nolint:errcheck
+	os.Setenv("FLOAT3", "2.3 2.4 2.5")             //nolint:errcheck
+	os.Setenv("FLOAT4", "2.6,2.7,dois-ponto-oito") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -694,8 +694,8 @@ func TestGetFloat32Slice(t *testing.T) {
 }
 
 func TestGetFloat64(t *testing.T) {
-	os.Setenv("FLOAT2", "2.1")
-	os.Setenv("FLOAT3", "três-ponto-um")
+	os.Setenv("FLOAT2", "2.1")           //nolint:errcheck
+	os.Setenv("FLOAT3", "três-ponto-um") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -719,9 +719,9 @@ func TestGetFloat64(t *testing.T) {
 }
 
 func TestGetFloat64Slice(t *testing.T) {
-	os.Setenv("FLOAT2", "2.1,2.2")
-	os.Setenv("FLOAT3", "2.3 2.4 2.5")
-	os.Setenv("FLOAT4", "2.6,2.7,dois-ponto-oito")
+	os.Setenv("FLOAT2", "2.1,2.2")                 //nolint:errcheck
+	os.Setenv("FLOAT3", "2.3 2.4 2.5")             //nolint:errcheck
+	os.Setenv("FLOAT4", "2.6,2.7,dois-ponto-oito") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -747,7 +747,7 @@ func TestGetFloat64Slice(t *testing.T) {
 }
 
 func TestGetBytes(t *testing.T) {
-	os.Setenv("STRING2", "STRING2")
+	os.Setenv("STRING2", "STRING2") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -770,7 +770,7 @@ func TestGetBytes(t *testing.T) {
 }
 
 func TestGetDuration(t *testing.T) {
-	os.Setenv("DURATION2", "10")
+	os.Setenv("DURATION2", "10") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -794,8 +794,8 @@ func TestGetDuration(t *testing.T) {
 }
 
 func TestGetBase64ToBytes(t *testing.T) {
-	os.Setenv("BASE64-2", "SGVsbG8gV29ybGQgMg==")
-	os.Setenv("BASE64-3", "invalid-base64-value")
+	os.Setenv("BASE64-2", "SGVsbG8gV29ybGQgMg==") //nolint:errcheck
+	os.Setenv("BASE64-3", "invalid-base64-value") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
@@ -819,8 +819,8 @@ func TestGetBase64ToBytes(t *testing.T) {
 }
 
 func TestGetBase64ToString(t *testing.T) {
-	os.Setenv("BASE64-2", "SGVsbG8gV29ybGQgMg==")
-	os.Setenv("BASE64-3", "invalid-base64-value")
+	os.Setenv("BASE64-2", "SGVsbG8gV29ybGQgMg==") //nolint:errcheck
+	os.Setenv("BASE64-3", "invalid-base64-value") //nolint:errcheck
 
 	var tests = []struct {
 		kind          string
