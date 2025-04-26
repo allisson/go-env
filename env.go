@@ -1,13 +1,14 @@
 package env
 
 import (
+	b64 "encoding/base64"
 	"os"
 	"strconv"
 	"strings"
 	"time"
 )
 
-// GetString returns a string value from environment variable or default value
+// GetString returns a string value from environment variable or the default value
 func GetString(key, defaultValue string) string {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -17,7 +18,7 @@ func GetString(key, defaultValue string) string {
 	return val
 }
 
-// GetStringSlice returns a string slice from environment variable or default value
+// GetStringSlice returns a string slice from environment variable or the default value
 func GetStringSlice(key, sep string, defaultValue []string) []string {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -30,7 +31,7 @@ func GetStringSlice(key, sep string, defaultValue []string) []string {
 	return slice
 }
 
-// GetInt returns a int value from environment variable or default value
+// GetInt returns a int value from environment variable or the default value
 func GetInt(key string, defaultValue int) int {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -45,7 +46,7 @@ func GetInt(key string, defaultValue int) int {
 	return result
 }
 
-// GetIntSlice returns a int slice from environment variable or default value
+// GetIntSlice returns a int slice from environment variable or the default value
 func GetIntSlice(key, sep string, defaultValue []int) []int {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -64,7 +65,75 @@ func GetIntSlice(key, sep string, defaultValue []int) []int {
 	return slice
 }
 
-// GetInt32 returns a int32 value from environment variable or default value
+// GetInt8 returns a int8 value from environment variable or the default value
+func GetInt8(key string, defaultValue int8) int8 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseInt(val, 10, 8)
+	if err != nil {
+		return defaultValue
+	}
+
+	return int8(result)
+}
+
+// GetInt8Slice returns a int8 slice from environment variable or the default value
+func GetInt8Slice(key, sep string, defaultValue []int8) []int8 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	var slice []int8
+	for _, s := range strings.Split(val, sep) {
+		result, err := strconv.ParseInt(s, 10, 8)
+		if err != nil {
+			return defaultValue
+		}
+		slice = append(slice, int8(result))
+	}
+
+	return slice
+}
+
+// GetInt16 returns a int16 value from environment variable or the default value
+func GetInt16(key string, defaultValue int16) int16 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseInt(val, 10, 16)
+	if err != nil {
+		return defaultValue
+	}
+
+	return int16(result)
+}
+
+// GetInt16Slice returns a int8 slice from environment variable or the default value
+func GetInt16Slice(key, sep string, defaultValue []int16) []int16 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	var slice []int16
+	for _, s := range strings.Split(val, sep) {
+		result, err := strconv.ParseInt(s, 10, 16)
+		if err != nil {
+			return defaultValue
+		}
+		slice = append(slice, int16(result))
+	}
+
+	return slice
+}
+
+// GetInt32 returns a int32 value from environment variable or the default value
 func GetInt32(key string, defaultValue int32) int32 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -79,7 +148,7 @@ func GetInt32(key string, defaultValue int32) int32 {
 	return int32(result)
 }
 
-// GetInt32Slice returns a int32 slice from environment variable or default value
+// GetInt32Slice returns a int32 slice from environment variable or the default value
 func GetInt32Slice(key, sep string, defaultValue []int32) []int32 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -98,7 +167,7 @@ func GetInt32Slice(key, sep string, defaultValue []int32) []int32 {
 	return slice
 }
 
-// GetInt64 returns a int64 value from environment variable or default value
+// GetInt64 returns a int64 value from environment variable or the default value
 func GetInt64(key string, defaultValue int64) int64 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -113,7 +182,7 @@ func GetInt64(key string, defaultValue int64) int64 {
 	return result
 }
 
-// GetInt64Slice returns a int64 slice from environment variable or default value
+// GetInt64Slice returns a int64 slice from environment variable or the default value
 func GetInt64Slice(key, sep string, defaultValue []int64) []int64 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -132,7 +201,7 @@ func GetInt64Slice(key, sep string, defaultValue []int64) []int64 {
 	return slice
 }
 
-// GetUint returns a uint value from environment variable or default value
+// GetUint returns a uint value from environment variable or the default value
 func GetUint(key string, defaultValue uint) uint {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -147,7 +216,7 @@ func GetUint(key string, defaultValue uint) uint {
 	return uint(result)
 }
 
-// GetUintSlice returns a uint slice from environment variable or default value
+// GetUintSlice returns a uint slice from environment variable or the default value
 func GetUintSlice(key, sep string, defaultValue []uint) []uint {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -166,7 +235,75 @@ func GetUintSlice(key, sep string, defaultValue []uint) []uint {
 	return slice
 }
 
-// GetUint32 returns a uint32 value from environment variable or default value
+// GetUint8 returns a uint8 value from environment variable or the default value
+func GetUint8(key string, defaultValue uint8) uint8 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseUint(val, 10, 8)
+	if err != nil {
+		return defaultValue
+	}
+
+	return uint8(result)
+}
+
+// GetUint8Slice returns a uint8 slice from environment variable or the default value
+func GetUint8Slice(key, sep string, defaultValue []uint8) []uint8 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	var slice []uint8
+	for _, s := range strings.Split(val, sep) {
+		result, err := strconv.ParseUint(s, 10, 8)
+		if err != nil {
+			return defaultValue
+		}
+		slice = append(slice, uint8(result))
+	}
+
+	return slice
+}
+
+// GetUint16 returns a uint16 value from environment variable or the default value
+func GetUint16(key string, defaultValue uint16) uint16 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := strconv.ParseUint(val, 10, 16)
+	if err != nil {
+		return defaultValue
+	}
+
+	return uint16(result)
+}
+
+// GetUint16Slice returns a uint16 slice from environment variable or the default value
+func GetUint16Slice(key, sep string, defaultValue []uint16) []uint16 {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	var slice []uint16
+	for _, s := range strings.Split(val, sep) {
+		result, err := strconv.ParseUint(s, 10, 16)
+		if err != nil {
+			return defaultValue
+		}
+		slice = append(slice, uint16(result))
+	}
+
+	return slice
+}
+
+// GetUint32 returns a uint32 value from environment variable or the default value
 func GetUint32(key string, defaultValue uint32) uint32 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -181,7 +318,7 @@ func GetUint32(key string, defaultValue uint32) uint32 {
 	return uint32(result)
 }
 
-// GetUint32Slice returns a uint32 slice from environment variable or default value
+// GetUint32Slice returns a uint32 slice from environment variable or the default value
 func GetUint32Slice(key, sep string, defaultValue []uint32) []uint32 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -200,7 +337,7 @@ func GetUint32Slice(key, sep string, defaultValue []uint32) []uint32 {
 	return slice
 }
 
-// GetUint64 returns a uint64 value from environment variable or default value
+// GetUint64 returns a uint64 value from environment variable or the default value
 func GetUint64(key string, defaultValue uint64) uint64 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -215,7 +352,7 @@ func GetUint64(key string, defaultValue uint64) uint64 {
 	return result
 }
 
-// GetUint64Slice returns a uint64 slice from environment variable or default value
+// GetUint64Slice returns a uint64 slice from environment variable or the default value
 func GetUint64Slice(key, sep string, defaultValue []uint64) []uint64 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -234,7 +371,7 @@ func GetUint64Slice(key, sep string, defaultValue []uint64) []uint64 {
 	return slice
 }
 
-// GetBool returns a boolean value from environment variable or default value
+// GetBool returns a boolean value from environment variable or the default value
 func GetBool(key string, defaultValue bool) bool {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -249,7 +386,7 @@ func GetBool(key string, defaultValue bool) bool {
 	return result
 }
 
-// GetBoolSlice returns a boolean slice from environment variable or default value
+// GetBoolSlice returns a boolean slice from environment variable or the default value
 func GetBoolSlice(key, sep string, defaultValue []bool) []bool {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -268,7 +405,7 @@ func GetBoolSlice(key, sep string, defaultValue []bool) []bool {
 	return slice
 }
 
-// GetFloat32 returns a float32 value from environment variable or default value
+// GetFloat32 returns a float32 value from environment variable or the default value
 func GetFloat32(key string, defaultValue float32) float32 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -283,7 +420,7 @@ func GetFloat32(key string, defaultValue float32) float32 {
 	return float32(result)
 }
 
-// GetFloat32Slice returns a float32 slice from environment variable or default value
+// GetFloat32Slice returns a float32 slice from environment variable or the default value
 func GetFloat32Slice(key, sep string, defaultValue []float32) []float32 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -302,7 +439,7 @@ func GetFloat32Slice(key, sep string, defaultValue []float32) []float32 {
 	return slice
 }
 
-// GetFloat64 returns a float64 value from environment variable or default value
+// GetFloat64 returns a float64 value from environment variable or the default value
 func GetFloat64(key string, defaultValue float64) float64 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -317,7 +454,7 @@ func GetFloat64(key string, defaultValue float64) float64 {
 	return result
 }
 
-// GetFloat64Slice returns a float64 slice from environment variable or default value
+// GetFloat64Slice returns a float64 slice from environment variable or the default value
 func GetFloat64Slice(key, sep string, defaultValue []float64) []float64 {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -336,7 +473,7 @@ func GetFloat64Slice(key, sep string, defaultValue []float64) []float64 {
 	return slice
 }
 
-// GetBytes returns a byte slice value from environment variable or default value
+// GetBytes returns a byte slice value from environment variable or the default value
 func GetBytes(key string, defaultValue []byte) []byte {
 	val, ok := os.LookupEnv(key)
 	if !ok {
@@ -346,8 +483,38 @@ func GetBytes(key string, defaultValue []byte) []byte {
 	return []byte(val)
 }
 
-// GetDuration returns a time.Duration value from environment variable or default value
+// GetDuration returns a time.Duration value from environment variable or the default value
 func GetDuration(key string, defaultValue int64, duration time.Duration) time.Duration {
 	value := GetInt64(key, defaultValue)
 	return time.Duration(value) * duration
+}
+
+// GetBase64ToBytes converts a base64 string to a byte slice value from the environment variable or the default value
+func GetBase64ToBytes(key string, defaultValue []byte) []byte {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := b64.StdEncoding.DecodeString(val)
+	if err != nil {
+		return defaultValue
+	}
+
+	return result
+}
+
+// GetBase64ToString converts a base64 string to a string value from the environment variable or the default value
+func GetBase64ToString(key string, defaultValue string) string {
+	val, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+
+	result, err := b64.StdEncoding.DecodeString(val)
+	if err != nil {
+		return defaultValue
+	}
+
+	return string(result)
 }

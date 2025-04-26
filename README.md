@@ -41,10 +41,24 @@ func main() {
 	// Other functions:
 	// GetInt()
 	// GetIntSlice()
+	// GetInt8()
+	// GetInt8Slice()
+	// GetInt16()
+	// GetInt16Slice()
 	// GetInt32()
 	// GetInt32Slice()
 	// GetInt64()
 	// GetInt64Slice()
+	// GetUInt()
+	// GetUIntSlice()
+	// GetUInt8()
+	// GetUInt8Slice()
+	// GetUInt16()
+	// GetUInt16Slice()
+	// GetUInt32()
+	// GetUInt32Slice()
+	// GetUInt64()
+	// GetUInt64Slice()
 	// GetBool()
 	// GetBoolSlice()
 	// GetFloat32()
@@ -52,6 +66,8 @@ func main() {
 	// GetFloat64()
 	// GetFloat64Slice()
 	// GetBytes()
+	// GetBase64ToBytes()
+	// GetBase64ToString()
 }
 ```
 
