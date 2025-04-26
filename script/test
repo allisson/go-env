@@ -1,5 +1,0 @@
-#!/bin/bash
-
-set -e
-go test -covermode=count -coverprofile=count.out -v ./...
-go tool cover -html=count.out -o coverage.html
