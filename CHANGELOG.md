@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/allisson/go-env/compare/v0.5.0...v0.6.0) (2026-01-20)
+
+
+### Features
+
+* improve documentation with comprehensive examples and enhanced comments ([#17](https://github.com/allisson/go-env/issues/17)) ([6614632](https://github.com/allisson/go-env/commit/661463224cc06bd94ad31f81292ac01af0f9f543))
+
 ## [0.5.0](https://github.com/allisson/go-env/compare/v0.4.0...v0.5.0) (2025-04-26)
 
 
